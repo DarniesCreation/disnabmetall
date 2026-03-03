@@ -160,7 +160,6 @@
     width: 6px; height: 6px;
     background: var(--gold);
     border-radius: 50%;
-    margin-bottom: 10px;
     animation: pulse 2s infinite;
   }
 
@@ -465,6 +464,38 @@
     footer { flex-direction: column; text-align: center; }
     .hero-stats { flex-wrap: wrap; }
     .stat { min-width: 110px; }
+
+    /* ФИКС ХЕДЕРА на мобиле */
+    header {
+      padding: 0 16px;
+      height: auto;
+      min-height: 64px;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .logo-name {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .logo-city {
+      font-size: 8px;
+    }
+
+    .logo-wrap {
+      gap: 8px;
+    }
+
+    .nav-cta {
+      padding: 8px 12px;
+      font-size: 13px !important;
+    }
   }
 </style>
 </head>
@@ -922,7 +953,7 @@
         <div class="c-ico">✉️</div>
         <div>
           <div class="c-lbl">Email</div>
-          <div class="c-val"><a href="/cdn-cgi/l/email-protection#15517c7b7c7e242c2d215578747c793b6760"><span class="__cf_email__" data-cfemail="fbbf92959290cac2c3cfbb969a9297d5898e">[email&#160;protected]</span></a></div>
+          <div class="c-val"><a href="mailto:disnabmetall@gmail.ru">disnabmetall@mail.ru</a></div>
         </div>
       </div>
       <div class="contact-card">
@@ -949,11 +980,11 @@
   <div class="footer-r">
     <a href="#products">Прайс-лист</a>
     <a href="#contact">Контакты</a>
-    <a href="/cdn-cgi/l/email-protection#ffbb96919694cec6c7cbbf929e9693d18d8a">Email</a>
+    <a href="mailto:disnabmetall@mail.ru">Email</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function switchTab(id) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -968,4 +999,15 @@
         e.target.style.transform = 'translateY(0)';
         observer.unobserve(e.target);
       }
-    
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.contact-card, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
